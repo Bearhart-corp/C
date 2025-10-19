@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int atoi(char *s)
+{
+	int moins = 1;
+	int n = 0;
+	int i = 0;
+
+	while (s[i] == ' ' || s[i] >= 9 && s[i] <= 13)
+		i++;
+	while (s[i] == '+' || s[i] == '-')
+	{
+		if (s[i] == '-')
+			moins = -moins;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		n = n * 10;
+		n = n + s[i] - 48;
+		i++;
+	}
+	printf("i = %d, ", i);
+	return moins * n;
+}
+
+int main()
+{
+	int res = atoi("  --+--123cd");
+	printf("the result is: %d", res);
+	return 0;
+}
